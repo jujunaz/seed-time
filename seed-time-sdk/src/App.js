@@ -5,6 +5,8 @@ import { createStore, combineReducers } from 'redux';
 import SdkMap from '@boundlessgeo/sdk/components/map';
 import SdkMapReducer from '@boundlessgeo/sdk/reducers/map';
 import * as SdkMapActions from '@boundlessgeo/sdk/actions/map';
+// import { Navbar, Jumbotron, Button } from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 
 const store = createStore(combineReducers({
   'map': SdkMapReducer,
@@ -28,9 +30,13 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Welcome to React</h1>
         </header>
+
         <p className="App-intro">
           To get started, edit <code>src/App.js</code> and save to reload.
         </p>
+        <Button bsStyle="success">NEW BUTTON!</Button>
+
+        <div className="VeggieLine" />
         <SdkMap store={store} />
       </div>
     );
