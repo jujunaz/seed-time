@@ -13,7 +13,8 @@
     "react-dom": "^16.4.0",
     "react-redux": "^5.0.7",
     "react-scripts": "1.1.4",
-    "redux": "^4.0.0"
+    "redux": "^4.0.0",
+    "whatwg-fetch": "^2.0.4"
   },
   "scripts": {
     "build-css": "node-sass-chokidar src/ --include-path node_modules/ -o src/",

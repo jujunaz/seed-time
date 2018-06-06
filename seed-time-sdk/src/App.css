@@ -236,13 +236,29 @@ li.sdk-layer {
   height: 80px; }
 
 .App-header {
-  background-color: #222;
+  background-color: #556B2F;
   height: 150px;
   padding: 20px;
   color: white; }
 
+.intro-list {
+  margin-left: 80px;
+  margin-right: 80px;
+  border: 50px; }
+
+.SeedLogo {
+  height: 10px; }
+
+.logoz {
+  height: 10px; }
+
 .App-title {
-  font-size: 1.5em; }
+  font-size: 1.5em;
+  text-align: left; }
+
+.btn-custom {
+  background-color: #556B2F;
+  color: white; }
 
 .App-intro {
   font-size: large; }

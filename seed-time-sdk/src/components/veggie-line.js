@@ -1,4 +1,4 @@
-import React { Component } from 'react';
+import React, { Component } from 'react';
 import veggie from './veggie-line-img.png';
 
 class VeggieLine

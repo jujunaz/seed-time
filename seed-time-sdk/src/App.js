@@ -7,6 +7,10 @@ import SdkMapReducer from '@boundlessgeo/sdk/reducers/map';
 import * as SdkMapActions from '@boundlessgeo/sdk/actions/map';
 // import { Navbar, Jumbotron, Button } from 'react-bootstrap';
 import { Button } from 'react-bootstrap';
+import { Jumbotron } from 'react-bootstrap';
+import { ListGroup, ListGroupItem } from 'react-bootstrap';
+import VeggieLine from './components/veggie-line';
+import SeedLogo from './components/seed-logo';
 
 const store = createStore(combineReducers({
   'map': SdkMapReducer,
@@ -23,24 +27,40 @@ class App extends Component {
     source: 'osm',
   }));
 }
-  render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
+render() {
+  return (
+    <div className="App">
+    <header className="App-header">
 
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
-        <Button bsStyle="success">NEW BUTTON!</Button>
+    <h1 className="App-title">Seed Time</h1>
+    </header>
+    <SeedLogo />
+    <Jumbotron>
+    <h1>Welcome to Seed Time</h1>
+    <p>
+    Seed time helps you grow things.
+    </p>
+    </Jumbotron>
+    <Button bsStyle="custom">How it works</Button>
+    <p>  </p>
+    <div className="intro-list">
+    <ListGroup>
+    <ListGroupItem bsStyle="success">Choose a plot to grow on</ListGroupItem>
+    <ListGroupItem bsStyle="success">Choose what you would like to grow</ListGroupItem>
+    <ListGroupItem bsStyle="success">Get a customised map and calendar</ListGroupItem>
+    </ListGroup>
+    </div>
+    <VeggieLine />
+    <p>  </p>
+    <Button bsStyle="custom">Try out Seed Time!</Button>
+    <p>  </p>
 
-        <div className="VeggieLine" />
-        <SdkMap store={store} />
-      </div>
-    );
-  }
+
+    <SdkMap store={store} />
+
+    </div>
+  );
+}
 }
 
 export default App;
