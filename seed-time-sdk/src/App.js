@@ -12,11 +12,31 @@ import { ListGroup, ListGroupItem } from 'react-bootstrap';
 import VeggieLine from './components/veggie-line';
 import SeedLogo from './components/seed-logo';
 
+
+import ReactDOM from 'react-dom';
+import SdkDrawingReducer from '@boundlessgeo/sdk/reducers/drawing';
+import SdkZoomControl from '@boundlessgeo/sdk/components/map/zoom-control';
+import * as mapActions from '@boundlessgeo/sdk/actions/map';
+import * as drawingActions from '@boundlessgeo/sdk/actions/drawing';
+import {INTERACTIONS} from '@boundlessgeo/sdk/constants';
+import '@boundlessgeo/sdk/stylesheet/sdk.scss';
+
+
+
+
 const store = createStore(combineReducers({
   'map': SdkMapReducer,
-}));
+  'drawing': SdkDrawingReducer,
+}), window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
 
 class App extends Component {
+  constructor(props) {
+  super(props);
+
+  this.handleClick = this.handleClick.bind(this);
+
+}
   componentDidMount() {
   // add the OSM source
   store.dispatch(SdkMapActions.addOsmSource('osm'));
@@ -26,7 +46,32 @@ class App extends Component {
     id: 'osm',
     source: 'osm',
   }));
+
+  store.dispatch(mapActions.addSource('polygons', {
+      type: 'geojson',
+      data: {
+        type: 'FeatureCollection',
+        features: [],
+      },
+    }));
+
+  store.dispatch(mapActions.addLayer({
+  id: 'polys',
+  source: 'polygons',
+  type: 'fill',
+  paint: {
+    'fill-opacity': 0.7,
+    'fill-color': '#feb24c',
+    'fill-outline-color': '#f03b20',
+  },
+}));
 }
+
+handleClick() {
+  console.log("ahhhhhh");
+  store.dispatch(drawingActions.startDrawing('polygons', INTERACTIONS.polygon, 'direct_select'));
+};
+
 render() {
   return (
     <div className="App">
@@ -57,7 +102,8 @@ render() {
 
 
     <SdkMap store={store} />
-
+    <Button bsStyle="custom" onClick={this.handleClick}>Draw a polygon</Button>
+    <Button bsStyle="custom">Draw a line</Button>
     </div>
   );
 }
