@@ -15,11 +15,7 @@
   padding: 20px;
   color: white;
 }
-.intro-list{
-  margin-left: 80px;
-  margin-right: 80px;
-  border: 50px;
-}
+
 .SeedLogo {
   height: 10px;
 }
@@ -39,6 +35,19 @@
 
 .App-intro {
   font-size: large;
+}
+
+.map-buttons {
+  display: inline-block;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.main-map {
+  margin-left: 80px;
+  margin-right: 80px;
+  margin-top: 40px;
+  margin-bottom: 20px;
 }
 
 @keyframes App-logo-spin {
